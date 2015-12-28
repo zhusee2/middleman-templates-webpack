@@ -13,8 +13,26 @@ module Middleman
     def write_package_name
       insert_into_file 'package.json', before: '  "version"' do
         project_name = File.basename(destination_root)
-        ['  "name": "', project_name, '",', "\n"].join('')
+        "  \"name\": \"#{ project_name }\",\n"
       end
     end
+
+    def write_package_engine
+      if yes?('Detect node and npm version? (Y/n)')
+        insert_into_file 'package.json', after: "\"engines\": {\n" do
+          node_version = run('node --version', verbose: false, capture: true)
+          npm_version  = run('npm --version',  verbose: false, capture: true)
+
+          node_version = node_version.to_s.delete('v').strip
+          npm_version = npm_version.to_s.strip
+
+          [
+            "    \"node\": \"#{ node_version }\",\n",
+            "    \"npm\": \"#{ npm_version }\"\n"
+          ].join('')
+        end
+      end
+    end
+
   end
 end
