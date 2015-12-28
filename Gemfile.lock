@@ -32,6 +32,7 @@ GEM
     fastimage (1.8.1)
       addressable (~> 2.3, >= 2.3.5)
     ffi (1.9.10)
+    git-version-bump (0.15.1)
     haml (4.0.7)
       tilt
     hamster (2.0.0)
@@ -90,7 +91,11 @@ GEM
       tilt (~> 1.4.1)
     padrino-support (0.13.0)
       activesupport (>= 3.1)
+    puma (2.15.3)
     rack (1.6.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
     rack-livereload (0.3.16)
       rack
     rack-test (0.6.3)
@@ -120,6 +125,8 @@ PLATFORMS
 DEPENDENCIES
   middleman (>= 4.0.0)
   middleman-livereload
+  puma
+  rack-contrib
   sassc (>= 1.8.0)
   tzinfo-data
   wdm (~> 0.1.0)

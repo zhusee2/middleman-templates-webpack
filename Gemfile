@@ -14,3 +14,7 @@ gem 'middleman-livereload'
 
 # Use LibSass for faster complie
 gem 'sassc', '>= 1.8.0'
+
+# Static files hosting
+gem "rack-contrib"
+gem "puma"
