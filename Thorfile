@@ -10,6 +10,13 @@ module Middleman
       directory 'template', '.', exclude_pattern: /\.DS_Store$/
     end
 
+    def write_ruby_version
+      ruby_version = run('ruby -v', verbose: false, capture: true)
+      ruby_version = ruby_version.to_s.scan(/\d\.\d\.\d/)[0]
+
+      insert_into_file 'Gemfile', "ruby '#{ ruby_version }'\n", after: "source 'https://rubygems.org'\n"
+    end
+
     def write_package_name
       insert_into_file 'package.json', before: '  "version"' do
         project_name = File.basename(destination_root)
