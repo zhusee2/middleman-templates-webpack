@@ -1,7 +1,6 @@
 {
-  "name": "middleman-v4-test",
   "version": "1.0.0",
-  "description": "Middleman v4 Project with Webpack",
+  "description": "",
   "engines": {
     "node": "5.0.0",
     "npm": "3.3.6"

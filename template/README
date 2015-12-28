@@ -1,3 +1,8 @@
+# Middleman Templates Webpack
+
+This is a Middleman project template empowering Webpack as JavaScript pipeline.
+It also supports deploying and hosting your static site on Heroku.
+
 ## Using multiple buildpacks on Heroku
 
 ```shell
