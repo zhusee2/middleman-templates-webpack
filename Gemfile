@@ -3,6 +3,8 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+gem 'rake'
+
 # For faster file watcher updates on Windows:
 gem 'wdm', '~> 0.1.0', platforms: [:mswin, :mingw]
 
