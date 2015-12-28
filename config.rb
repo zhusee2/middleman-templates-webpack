@@ -16,12 +16,6 @@ page '/*.txt', layout: false
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
-# General configuration
-
-# Reload the browser automatically whenever files change
-configure :development do
-  activate :livereload
-end
 
 ###
 # Helpers
@@ -34,8 +28,29 @@ end
 #   end
 # end
 
+
+###
+# General configuration
+###
+
+# Reload the browser automatically whenever files change
+configure :development do
+  activate :livereload
+end
+
+# Use Webpack as pipeline for JS files
+set :js_dir, 'js'
+ignore '/javascripts/*'
+
+activate :external_pipeline,
+  name: :webpack,
+  command: "npm run #{ build? ? :build : :watch }",
+  source: ".cache/webpack"
+
 # Build-specific configuration
 configure :build do
+  ignore '*.map'
+
   # Minify CSS on build
   # activate :minify_css
 
