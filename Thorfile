@@ -6,6 +6,11 @@ module Middleman
 
     source_root File.expand_path(File.dirname(__FILE__))
 
+    def ask_questions
+      say('=======')
+      @detect_engine = yes?('Detect node and npm version? (y/N)')
+    end
+
     def copy_default_files
       directory 'template', '.', exclude_pattern: /\.DS_Store$/
     end
@@ -25,7 +30,7 @@ module Middleman
     end
 
     def write_package_engine
-      if yes?('Detect node and npm version? (Y/n)')
+      if @detect_engine
         insert_into_file 'package.json', after: "\"engines\": {\n" do
           node_version = run('node --version', verbose: false, capture: true)
           npm_version  = run('npm --version',  verbose: false, capture: true)
