@@ -1,0 +1,10 @@
+## Using multiple buildpacks on Heroku
+
+```shell
+heroku buildpacks:add --index 1 heroku/nodejs
+heroku buildpacks:add --index 2 heroku/ruby
+```
+
+When you push your project to Heroku, Node.js environments will be setup first and then Ruby. Finally the Ruby buildpack will run `rake assets:precompile` to prepare everything into `/build` directory.
+
+Ref: https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app
